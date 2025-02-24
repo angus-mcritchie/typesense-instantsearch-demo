@@ -18,8 +18,10 @@ const typesenseInstantsearchAdapter = new TypesenseInstantSearchAdapter({
   //  queryBy is required.
   //  filterBy is managed and overridden by InstantSearch.js. To set it, you want to use one of the filter widgets like refinementList or use the `configure` widget.
   additionalSearchParameters: {
-    queryBy: "title,authors",
-  },
+    query_by: 'title',
+    infix: 'always',
+    num_typos: 2
+  }
 });
 const { searchClient } = typesenseInstantsearchAdapter;
 

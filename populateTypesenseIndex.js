@@ -20,7 +20,7 @@ module.exports = (async () => {
   const schema = {
     name: 'books',
     fields: [
-      { name: 'title', type: 'string' },
+      { name: 'title', type: 'string', infix: true },
       { name: 'authors', type: 'string[]', facet: true },
 
       { name: 'publication_year', type: 'int32', facet: true },
