@@ -20,7 +20,9 @@ const typesenseInstantsearchAdapter = new TypesenseInstantSearchAdapter({
   additionalSearchParameters: {
     query_by: 'title',
     infix: 'always',
-    num_typos: 2
+    num_typos: 2,
+    sort_by: '_text_match:desc',
+    text_match_type: 'sum_score',
   }
 });
 const { searchClient } = typesenseInstantsearchAdapter;
@@ -43,15 +45,9 @@ search.addWidgets([
       item(item) {
         return `
         <div>
-          <img src="${item.image_url}" alt="${item.name}" height="100" />
           <div class="hit-name">
             ${item._highlightResult.title.value}
           </div>
-          <div class="hit-authors">
-          ${item._highlightResult.authors.map((a) => a.value).join(", ")}
-          </div>
-          <div class="hit-publication-year">${item.publication_year}</div>
-          <div class="hit-rating">${item.average_rating}/5 rating</div>
         </div>
       `;
       },
